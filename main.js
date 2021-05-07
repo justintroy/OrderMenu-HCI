@@ -1,11 +1,11 @@
 class MealItem {
-    constructor(name, quantity, unit, calories, protein, fat, vitaminA, calcium) {
-        Object.assign(this, { name, quantity, unit, calories, protein, fat, vitaminA, calcium })
-    }
+  constructor(name, quantity, unit, calories, protein, fat, vitaminA, calcium) {
+    Object.assign(this, { name, quantity, unit, calories, protein, fat, vitaminA, calcium })
+  }
 }
 
 function createItem() {
-    return new MealItem(...arguments)
+  return new MealItem(...arguments)
 }
 
 //Item data for reference ex. items database (Order matters) 
@@ -38,8 +38,8 @@ let tableData = [
 
 //itemID == row
 function updateTable(itemID) {
-  let tableRow = document.querySelector("table").rows[itemID+1].cells;
-  let lastTableRow = document.querySelector("table").rows[tableData.length+1].cells;
+  let tableRow = document.querySelector("table").rows[itemID + 1].cells;
+  let lastTableRow = document.querySelector("table").rows[tableData.length + 1].cells;
 
   //update individual row
   tableRow[2].innerText = `${tableData.find((item) => item.name === items[itemID].name).calories}`
@@ -49,23 +49,23 @@ function updateTable(itemID) {
   tableRow[6].innerText = `${tableData.find((item) => item.name === items[itemID].name).calcium}`
 
   //update total row
-  lastTableRow[1].innerText = `${tableData.reduce((a, b) => a + b.calories, 0)}`;
-  lastTableRow[2].innerText = `${tableData.reduce((a, b) => a + b.protein, 0)}`;
-  lastTableRow[3].innerText = `${tableData.reduce((a, b) => a + b.fat, 0)}`;
-  lastTableRow[4].innerText = `${tableData.reduce((a, b) => a + b.vitaminA, 0)}`;
-  lastTableRow[5].innerText = `${tableData.reduce((a, b) => a + b.calcium, 0)}`;
+  lastTableRow[1].innerText = +(tableData.reduce((a, b) => a + b.calories, 0)).toFixed(2);
+  lastTableRow[2].innerText = +(tableData.reduce((a, b) => a + b.protein, 0)).toFixed(2);
+  lastTableRow[3].innerText = +(tableData.reduce((a, b) => a + b.fat, 0)).toFixed(2)
+  lastTableRow[4].innerText = +(tableData.reduce((a, b) => a + b.vitaminA, 0)).toFixed(2);
+  lastTableRow[5].innerText = +(tableData.reduce((a, b) => a + b.calcium, 0)).toFixed(2);
 }
 
 function updateTableData(id, value) {
   let tableIndex = tableData.findIndex((i) => i.name === id); //Table data (client-side)
   let itemID = items.findIndex((i) => i.name === id); //Item data ex. items database
 
-  tableData[tableIndex].quantity = (items[itemID].quantity * value);
-  tableData[tableIndex].calories = (items[itemID].calories * value);
-  tableData[tableIndex].protein = (items[itemID].protein * value);
-  tableData[tableIndex].fat = (items[itemID].fat * value);
-  tableData[tableIndex].vitaminA = (items[itemID].vitaminA * value);
-  tableData[tableIndex].calcium = (items[itemID].calcium * value);
+  tableData[tableIndex].quantity = +(items[itemID].quantity * value).toFixed(2);
+  tableData[tableIndex].calories = +(items[itemID].calories * value).toFixed(2);
+  tableData[tableIndex].protein = +(items[itemID].protein * value).toFixed(2);
+  tableData[tableIndex].fat = +(items[itemID].fat * value).toFixed(2);
+  tableData[tableIndex].vitaminA = +(items[itemID].vitaminA * value).toFixed(2);
+  tableData[tableIndex].calcium = +(items[itemID].calcium * value).toFixed(2);
 
   updateTable(itemID);
 }
@@ -80,11 +80,5 @@ function resetAllValues() {
     item.calcium = 0;
 
     updateTable(itemID);
-  }); 
+  });
 }
-
-/* function computeTotal(arrayValues) {
-    return arrayValues.reduce((total, value) => total + value, 0)
-}
-
-items.forEach(item => console.log(item.name)) */
