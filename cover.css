@@ -5,4 +5,13 @@ th {
 
 td {
   font-size: 15px;
+  width: 170px;
+}
+
+.input-group {
+  margin: 5px;
+}
+
+.input-group-prepend {
+  margin-right: 10px;
 }
