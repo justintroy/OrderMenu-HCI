@@ -16,6 +16,7 @@ let items = [
     new MealItem('Papaya', 1, 'g', 156, 2.4, 0.4, 7000, 80),
     new MealItem('Tuna in Water', 1, 'lb', 575, 126.8, 3.6, 0, 73),
     new MealItem('Lobster', 1, 'med', 405, 28.8, 26.6, 984, 190)
+
 ]
 
 

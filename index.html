@@ -1,80 +1,230 @@
 <!DOCTYPE html>
 <html lang="en" class="h-100">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
-      crossorigin="anonymous"
-    />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Custom styles for this template -->
-    <link href="cover.css" rel="stylesheet" />
-  </head>
-  <body class="d-flex h-100 text-center text-white bg-dark">
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-      <header class="mb-auto">
-        <div>
-          <h3 class="float-md-start mb-0">Cover</h3>
-          <nav class="nav nav-masthead justify-content-center float-md-end">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </nav>
-        </div>
-      </header>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+</head>
 
-      <main class="px-3">
-        <h1>Order Menu</h1>
+<body class="bg-secondary">
 
-        <div class="containter">
-          <form>
-            <table class="table table-dark">
-              <thead>
-                <tr>
-                  <th scope="col">Order</th>
-                  <th scope="col">Quantity</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <div></div>
-                  <th scope="row">spinach (1 cup)</th>
-                  <td>
-                    <div class="input-group">
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Quantity"
-                        aria-label="Quantity"
-                        aria-describedby="basic-addon2"
-                      />
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">sweet potato (1 med.)</th>
-                  <td>Jacob</td>
-                </tr>
-                <tr>
-                  <th scope="row">yogurt (8 oz.)</th>
-                  <td>Larry</td>
-                </tr>
-              </tbody>
-            </table>
-          </form>
-        </div>
-      </main>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#"><i class="fal fa-atom"></i> Balmonte & Marilao</a>
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
 
-      <footer class="mt-auto text-white-50">
-        <p>Self-Review No. 3 on Human and Computer Interaction</p>
-        <p>by Balmonte and Marilao of DICT 2-1.</p>
-      </footer>
     </div>
-  </body>
+  </nav>
+
+  <div class="card text-white my-3 mx-auto d-block" style="max-width: 70%;">
+    <div class="card-header bg-info"><i class="fas fa-concierge-bell"></i> Meal Order</div>
+    <div class="card-body text-dark bg-light">
+
+      <form>
+        <table class="table table-bordered table-sm">
+          <thead class="thead-light">
+            <tr>
+              <th>Meal</th>
+              <th>Quantity</th>
+              <th>Calories</th>
+              <th>Protein (grams)</th>
+              <th>Fat (grams)</th>
+              <th>Vitamin A (IU)</th>
+              <th>Calcium (mg)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Spinach</td>
+              <td>
+                <div class="input-group">
+                  <input type="number" class="form-control m-0" id="spinach" placeholder="0" min="0">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">cup</span>
+                  </div>
+                </div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Sweet Potato</td>
+              <td>
+                <div class="input-group">
+                  <input type="number" class="form-control m-0" id="sweetPotato" placeholder="0" min="0">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">med</span>
+                  </div>
+                </div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Yogurt</td>
+              <td>
+                <div class="input-group">
+                  <input type="number" class="form-control m-0" id="yogurt" placeholder="0" min="0">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">oz</span>
+                  </div>
+                </div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Skim Milk</td>
+              <td>
+                <div class="input-group">
+                  <input type="number" class="form-control m-0" id="skimMilk" placeholder="0" min="0">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">cup</span>
+                  </div>
+                </div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Whole Wheat Bread</td>
+              <td>
+                <div class="input-group">
+                  <input type="number" class="form-control m-0" id="wholeWheatBread" placeholder="0" min="0">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">slice</span>
+                  </div>
+                </div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Brown Rice</td>
+              <td>
+                <div class="input-group">
+                  <input type="number" class="form-control m-0" id="brownRice" placeholder="0" min="0">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">cup</span>
+                  </div>
+                </div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Watermelon</td>
+              <td>
+                <div class="input-group">
+                  <input type="number" class="form-control m-0" id="watermelon" placeholder="0" min="0">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">wedge</span>
+                  </div>
+                </div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Papaya</td>
+              <td>
+                <div class="input-group">
+                  <input type="number" class="form-control m-0" id="papaya" placeholder="0" min="0">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">g</span>
+                  </div>
+                </div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Tuna in Water</td>
+              <td>
+                <div class="input-group">
+                  <input type="number" class="form-control m-0" id="tunaInWater" placeholder="0" min="0">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">lb</span>
+                  </div>
+                </div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Lobster</td>
+              <td>
+                <div class="input-group">
+                  <input type="number" class="form-control m-0" id="lobster" placeholder="0" min="0">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">med</span>
+                  </div>
+                </div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+
+    </div>
+    <div class="card-footer d-flex align-content-end">
+      <button type="button" class="btn btn-info mr-1  mr-md-2"><i class="fal fa-cog"></i> Compute</button>
+      <button type="button" class="btn btn-danger mr-1  mr-md-2"><i class="fal fa-redo" type="reset"></i> Reset</button>
+
+    </div>
+  </div>
+
+
+  <!-- <footer class="footer bg-dark text-white">
+  <p>Self-Review No. 3 on Human and Computer Interaction</p>
+  <p>by Balmonte and Marilao of DICT 2-1.</p>
+</footer> -->
+
+  </div>
+  <script src="main.js"></script>
+
+</body>
+
 </html>
