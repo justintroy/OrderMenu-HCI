@@ -82,3 +82,13 @@ function resetAllValues() {
     updateTable(itemID);
   });
 }
+
+function showModal() {
+  let total = Array.from(document.querySelector("table").rows[tableData.length + 1].cells).slice(1);
+
+  $(`#${total.reduce((sum, v) => sum + +v.textContent, 0) > 0 ? 'confirmation' : 'error'}Modal`).modal('show');
+}
+
+function generatePDF() {
+  console.log("pdf generated")
+}

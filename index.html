@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
   <link rel="stylesheet" href="cover.css">
+  <link rel="icon" href="favicon.png" type="image/gif" sizes="16x16">
+
+
   <title>Nutritional Content</title>
 </head>
 
@@ -32,7 +35,7 @@
     <div class="card-body text-dark bg-light">
 
       <form>
-        <table class="table table-bordered table-sm align-self-center">
+        <table class="table table-bordered table-sm table-responsive-lg">
           <thead class="thead-light">
             <tr>
               <th class="align-middle">Meal</th>
@@ -52,7 +55,7 @@
                   <input onchange="updateTableData(this.id, this.value)" type="number" class="form-control" id="spinach"
                     placeholder="0" min="0">
                   <div class="input-group-prepend">
-                    <span class="input-group-text">cup</span>
+                    <span class="input-group-text">cup </span>
                   </div>
                 </div>
               </td>
@@ -120,7 +123,7 @@
                   <input onchange="updateTableData(this.id, this.value)" type="number" class="form-control "
                     id="wholeWheatBread" placeholder="0" min="0">
                   <div class="input-group-prepend">
-                    <span class="input-group-text">slice</span>
+                    <span class="input-group-text">slice </span>
                   </div>
                 </div>
               </td>
@@ -137,7 +140,7 @@
                   <input onchange="updateTableData(this.id, this.value)" type="number" class="form-control"
                     id="brownRice" placeholder="0" min="0">
                   <div class="input-group-prepend">
-                    <span class="input-group-text">cup</span>
+                    <span class="input-group-text">cup </span>
                   </div>
                 </div>
               </td>
@@ -188,7 +191,7 @@
                   <input onchange="updateTableData(this.id, this.value)" type="number" class="form-control "
                     id="tunaInWater" placeholder="0" min="0">
                   <div class="input-group-prepend">
-                    <span class="input-group-text">lb</span>
+                    <span class="input-group-text">lb <span style="visibility:hidden">xxx</span></span>
                   </div>
                 </div>
               </td>
@@ -205,7 +208,7 @@
                   <input onchange="updateTableData(this.id, this.value)" type="number" class="form-control "
                     id="lobster" placeholder="0" min="0">
                   <div class="input-group-prepend">
-                    <span class="input-group-text">med</span>
+                    <span class="input-group-text">med <span style="visibility:hidden"></span></span>
                   </div>
                 </div>
               </td>
@@ -227,8 +230,13 @@
 
           </tbody>
         </table>
+
+
         <div class="text-right">
-          <button onclick="resetAllValues()" type="reset" class="btn btn-danger mr-1  mr-md-2"><i class="fal fa-redo"></i>
+          <button type="button" class="btn btn-primary" onclick=showModal()> <i class="fal fa-file-pdf mr-1"></i>
+            Generate Summary</button>
+          <button onclick="resetAllValues()" type="reset" class="btn btn-danger mr-1  mr-md-2">
+            <i class="fal fa-redo"></i>
             Reset
           </button>
         </div>
@@ -238,12 +246,60 @@
   </div>
 
 
+
+
   <footer class="footer text-center text-light p-3">
     <p>Self-Review No. 3 on Human and Computer Interaction</p>
     <p>Made by Balmonte and Marilao of DICT 2-1.</p>
   </footer>
 
+
+  <!-- Confirmation Modal -->
+  <div class="modal fade modal-small" id="confirmationModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmation</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to generate a pdf?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" onclick=generatePDF()>Download</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Error Modal -->
+  <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true" id="errorModal">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header bg-danger text-light">
+          <h5 class="modal-title">Error</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="text-light">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Select at least one meal!<br> Please try again!</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger text-light" data-dismiss="modal"> Okay</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <script src="main.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src=" https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 </body>
 
