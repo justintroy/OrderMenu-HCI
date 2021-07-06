@@ -10,30 +10,30 @@ function createItem() {
 
 //Item data for reference ex. items database (Order matters) 
 let items = [
-  createItem("spinach", 1, "cup", 23, 3, 0.3, 8100, 93),
-  createItem("sweetPotato", 1, " med", 160, 2, 1, 9230, 46),
-  createItem("yogurt", 8, "oz", 230, 10, 3, 120, 343),
-  createItem("skimMilk", 1, "cup", 85, 8, 0, 500, 302),
-  createItem("wholeWheatBread", 1, "slice", 65, 3, 1, 0, 24),
-  createItem("brownRice", 1, "cup", 178, 3.8, 0.9, 0, 18),
-  createItem("watermelon", 1, "wedge", 110, 2, 1, 2510, 30),
-  createItem("papaya", 1, "g", 156, 2.4, 0.4, 7000, 80),
-  createItem("tunaInWater", 1, "lb", 575, 126.8, 3.6, 0, 73),
-  createItem("lobster", 1, "med", 405, 28.8, 26.6, 984, 190),
+  createItem("Spinach", 1, "cup", 23, 3, 0.3, 8100, 93),
+  createItem("Sweet Potato", 1, " med", 160, 2, 1, 9230, 46),
+  createItem("Yogurt", 8, "oz", 230, 10, 3, 120, 343),
+  createItem("Skim Milk", 1, "cup", 85, 8, 0, 500, 302),
+  createItem("Whole Wheat Bread", 1, "slice", 65, 3, 1, 0, 24),
+  createItem("Brown Rice", 1, "cup", 178, 3.8, 0.9, 0, 18),
+  createItem("Watermelon", 1, "wedge", 110, 2, 1, 2510, 30),
+  createItem("Papaya", 1, "g", 156, 2.4, 0.4, 7000, 80),
+  createItem("Tuna In Water", 1, "lb", 575, 126.8, 3.6, 0, 73),
+  createItem("Lobster", 1, "med", 405, 28.8, 26.6, 984, 190),
 ];
 
 //Table data (client-side), starts with 0 because the default input value is 0
 let tableData = [
-  createItem("spinach", 1, "cup", 0, 0, 0, 0, 0),
-  createItem("sweetPotato", 1, " med", 0, 0, 0, 0, 0),
-  createItem("yogurt", 8, "oz", 0, 0, 0, 0, 0),
-  createItem("skimMilk", 1, "cup", 0, 0, 0, 0, 0),
-  createItem("wholeWheatBread", 1, "slice", 0, 0, 0, 0, 0),
-  createItem("brownRice", 1, "cup", 0, 0, 0, 0, 0),
-  createItem("watermelon", 1, "wedge", 0, 0, 0, 0, 0),
-  createItem("papaya", 1, "g", 0, 0, 0, 0, 0),
-  createItem("tunaInWater", 1, "lb", 0, 0, 0, 0, 0),
-  createItem("lobster", 1, "med", 0, 0, 0, 0, 0),
+  createItem("Spinach", 1, "cup", 0, 0, 0, 0, 0),
+  createItem("Sweet Potato", 1, " med", 0, 0, 0, 0, 0),
+  createItem("Yogurt", 8, "oz", 0, 0, 0, 0, 0),
+  createItem("Skim Milk", 1, "cup", 0, 0, 0, 0, 0),
+  createItem("Whole Wheat Bread", 1, "slice", 0, 0, 0, 0, 0),
+  createItem("Brown Rice", 1, "cup", 0, 0, 0, 0, 0),
+  createItem("Watermelon", 1, "wedge", 0, 0, 0, 0, 0),
+  createItem("Papaya", 1, "g", 0, 0, 0, 0, 0),
+  createItem("Tuna In Water", 1, "lb", 0, 0, 0, 0, 0),
+  createItem("Lobster", 1, "med", 0, 0, 0, 0, 0),
 ];
 
 //itemID == row
@@ -89,6 +89,28 @@ function showModal() {
   $(`#${total.reduce((sum, v) => sum + +v.textContent, 0) > 0 ? 'confirmation' : 'error'}Modal`).modal('show');
 }
 
+window.jsPDF = window.jspdf.jsPDF;
+
 function generatePDF() {
-  console.log("pdf generated")
+  const doc = new jsPDF();
+
+  const header = Array.from(document.querySelector("table").rows[0].cells).map((x) => x.innerText);
+  const body = Array.from(
+    tableData
+      .filter((x) => x.calories > 0)
+      .map((x) => {
+        let data = Object.values(x);
+        data.splice(1, 2, `${data[1]} ${data[2]}`);
+        return data;
+      })
+  );
+
+  doc.autoTable({
+    head: [header],
+    body: body
+  })
+
+  doc.save("table.pdf");
+  
+  console.log(body);
 }

@@ -13,7 +13,8 @@
   <link rel="stylesheet" href="cover.css">
   <link rel="icon" href="favicon.png" type="image/gif" sizes="16x16">
 
-
+  <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+  <script src="https://unpkg.com/jspdf-autotable"></script>
   <title>Nutritional Content</title>
 </head>
 
@@ -35,7 +36,7 @@
     <div class="card-body text-dark bg-light">
 
       <form>
-        <table class="table table-bordered table-sm table-responsive-lg">
+        <table class="table table-bordered table-sm table-responsive-lg" id="nutritiontable">
           <thead class="thead-light">
             <tr>
               <th class="align-middle">Meal</th>
@@ -52,7 +53,7 @@
               <td>Spinach</td>
               <td>
                 <div class="input-group input-group-sm">
-                  <input onchange="updateTableData(this.id, this.value)" type="number" class="form-control" id="spinach"
+                  <input onchange="updateTableData(this.id, this.value)" type="number" class="form-control" id="Spinach"
                     placeholder="0" min="0">
                   <div class="input-group-prepend">
                     <span class="input-group-text">cup </span>
@@ -70,7 +71,7 @@
               <td>
                 <div class="input-group input-group-sm">
                   <input onchange="updateTableData(this.id, this.value)" type="number" class="form-control"
-                    id="sweetPotato" placeholder="0" min="0">
+                    id="Sweet Potato" placeholder="0" min="0">
                   <div class="input-group-prepend">
                     <span class="input-group-text">med</span>
                   </div>
@@ -86,7 +87,7 @@
               <td>Yogurt</td>
               <td>
                 <div class="input-group input-group-sm">
-                  <input onchange="updateTableData(this.id, this.value)" type="number" class="form-control " id="yogurt"
+                  <input onchange="updateTableData(this.id, this.value)" type="number" class="form-control " id="Yogurt"
                     placeholder="0" min="0">
                   <div class="input-group-prepend">
                     <span class="input-group-text">*8 oz</span>
@@ -104,7 +105,7 @@
               <td>
                 <div class="input-group input-group-sm">
                   <input onchange="updateTableData(this.id, this.value)" type="number" class="form-control "
-                    id="skimMilk" placeholder="0" min="0">
+                    id="Skim Milk" placeholder="0" min="0">
                   <div class="input-group-prepend">
                     <span class="input-group-text">cup</span>
                   </div>
@@ -121,7 +122,7 @@
               <td>
                 <div class="input-group input-group-sm">
                   <input onchange="updateTableData(this.id, this.value)" type="number" class="form-control "
-                    id="wholeWheatBread" placeholder="0" min="0">
+                    id="Whole Wheat Bread" placeholder="0" min="0">
                   <div class="input-group-prepend">
                     <span class="input-group-text">slice </span>
                   </div>
@@ -138,7 +139,7 @@
               <td>
                 <div class="input-group input-group-sm">
                   <input onchange="updateTableData(this.id, this.value)" type="number" class="form-control"
-                    id="brownRice" placeholder="0" min="0">
+                    id="Brown Rice" placeholder="0" min="0">
                   <div class="input-group-prepend">
                     <span class="input-group-text">cup </span>
                   </div>
@@ -155,7 +156,7 @@
               <td>
                 <div class="input-group input-group-sm">
                   <input onchange="updateTableData(this.id, this.value)" type="number" class="form-control"
-                    id="watermelon" placeholder="0" min="0">
+                    id="Watermelon" placeholder="0" min="0">
                   <div class="input-group-prepend">
                     <span class="input-group-text">wedge</span>
                   </div>
@@ -171,7 +172,7 @@
               <td>Papaya</td>
               <td>
                 <div class="input-group input-group-sm">
-                  <input onchange="updateTableData(this.id, this.value)" type="number" class="form-control" id="papaya"
+                  <input onchange="updateTableData(this.id, this.value)" type="number" class="form-control" id="Papaya"
                     placeholder="0" min="0">
                   <div class="input-group-prepend">
                     <span class="input-group-text">g</span>
@@ -189,7 +190,7 @@
               <td>
                 <div class="input-group input-group-sm">
                   <input onchange="updateTableData(this.id, this.value)" type="number" class="form-control "
-                    id="tunaInWater" placeholder="0" min="0">
+                    id="Tuna In Water" placeholder="0" min="0">
                   <div class="input-group-prepend">
                     <span class="input-group-text">lb <span style="visibility:hidden">xxx</span></span>
                   </div>
@@ -206,7 +207,7 @@
               <td>
                 <div class="input-group input-group-sm">
                   <input onchange="updateTableData(this.id, this.value)" type="number" class="form-control "
-                    id="lobster" placeholder="0" min="0">
+                    id="Lobster" placeholder="0" min="0">
                   <div class="input-group-prepend">
                     <span class="input-group-text">med <span style="visibility:hidden"></span></span>
                   </div>
