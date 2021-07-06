@@ -83,34 +83,42 @@ function resetAllValues() {
   });
 }
 
+
 function showModal() {
   let total = Array.from(document.querySelector("table").rows[tableData.length + 1].cells).slice(1);
-
+  if (document.querySelector('#name').value === '') {
+    $('#missingNameErrorModal').modal('show')
+    return
+  }
   $(`#${total.reduce((sum, v) => sum + +v.textContent, 0) > 0 ? 'confirmation' : 'error'}Modal`).modal('show');
 }
 
 window.jsPDF = window.jspdf.jsPDF;
 
-function generatePDF() {
+function generatePDF(e) {
   const doc = new jsPDF();
 
   const header = Array.from(document.querySelector("table").rows[0].cells).map((x) => x.innerText);
   const body = Array.from(
     tableData
-      .filter((x) => x.calories > 0)
+      .filter(x => x.calories > 0)
       .map((x) => {
         let data = Object.values(x);
         data.splice(1, 2, `${data[1]} ${data[2]}`);
         return data;
       })
   );
+  let total = Array.from(document.querySelector("table").rows[tableData.length + 1].cells).slice(1).map(t => t.innerText);
+  let footer = ['Total: ', '', ...total]
 
   doc.autoTable({
     head: [header],
-    body: body
+    body: body,
+    foot: [footer],
+    startY: 30
   })
 
-  doc.save("table.pdf");
-  
-  console.log(body);
+
+  doc.save("Report-Summary.pdf");
+
 }
