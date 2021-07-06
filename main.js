@@ -111,13 +111,34 @@ function generatePDF(e) {
   let total = Array.from(document.querySelector("table").rows[tableData.length + 1].cells).slice(1).map(t => t.innerText);
   let footer = ['Total: ', '', ...total]
 
+
+  let logo = new Image();
+  logo.src = "images/logo.png";
+  doc.addImage(logo, "PNG", 15, 5, 7, 7);
+
+  doc.setFontSize(15);
+  doc.setFont("helvetica", "bold");
+  doc.text("Balmonte & Marilao", 24, 10);
+  doc.setLineWidth(1);
+  doc.setDrawColor(15, 15, 15);
+  doc.line(15, 15, 195, 15, "DF");
+  
+  let userName = document.getElementById("name").value;
+
+  doc.setFontSize(13);
+  doc.setFont("helvetica", "normal");
+  doc.text(`${userName}'s meal`, 15, 30);
+
+  doc.setFontSize(23);
+  doc.setFont("helvetica", "bold");
+  doc.text(`Nutritional  Content`, 15, 40);
+
   doc.autoTable({
     head: [header],
     body: body,
     foot: [footer],
-    startY: 30
-  })
-
+    startY: 46,
+  });
 
   doc.save("Report-Summary.pdf");
 
