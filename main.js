@@ -117,19 +117,19 @@ function generatePDF(e) {
   doc.addImage(logo, "PNG", 15, 5, 7, 7);
 
   doc.setFontSize(15);
-  doc.setFont("helvetica", "bold");
-  doc.text("Balmonte & Marilao", 24, 10);
+  doc.setFont("helvetica", "normal");
+  doc.text("Balmonte & Marilao", 23, 10);
   doc.setLineWidth(1);
   doc.setDrawColor(15, 15, 15);
   doc.line(15, 15, 195, 15, "DF");
   
   let userName = document.getElementById("name").value;
 
-  doc.setFontSize(13);
+  doc.setFontSize(15);
   doc.setFont("helvetica", "normal");
   doc.text(`${userName}'s meal`, 15, 30);
 
-  doc.setFontSize(23);
+  doc.setFontSize(25);
   doc.setFont("helvetica", "bold");
   doc.text(`Nutritional  Content`, 15, 40);
 
